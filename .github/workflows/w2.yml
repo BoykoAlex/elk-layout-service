@@ -7,7 +7,7 @@ on:
 #    conclusion: 'success'
 #    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 jobs:
-  if: ${{ github.event.workflow_run.conclusion == 'success' }}
+if: ${{ github.event.workflow_run.conclusion == 'success' }}
   build:
 
     runs-on: ubuntu-latest
