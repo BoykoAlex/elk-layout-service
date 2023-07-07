@@ -11,5 +11,5 @@ jobs:
     steps:
       - name: Sleep
         run: sleep 30
-      - name: Try to fail
-        run: exit 1
+#      - name: Try to fail
+#        run: exit 1
