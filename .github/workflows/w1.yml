@@ -1,0 +1,15 @@
+name: Failure
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Sleep
+        run: sleep 30
+      - name: Try to fail
+        run: exit 1

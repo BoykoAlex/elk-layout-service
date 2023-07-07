@@ -1,0 +1,16 @@
+name: Next
+
+on:
+  workflow_run:
+    workflows: ["Failure"]
+    types: [completed]
+    branches:
+      - "2.7.x"
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run
+        run: echo "Success!"
