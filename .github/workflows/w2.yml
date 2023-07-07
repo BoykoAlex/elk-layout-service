@@ -4,8 +4,9 @@ on:
   workflow_run:
     workflows: ["Failure"]
     types: [completed]
-    conclusion: 'success'
+#    conclusion: 'success'
 #    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ conclusion == 'success' }}
 jobs:
   build:
 
