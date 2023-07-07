@@ -4,8 +4,6 @@ on:
   workflow_run:
     workflows: ["Failure"]
     types: [completed]
-    branches:
-      - "2.7.x"
 jobs:
   build:
 
