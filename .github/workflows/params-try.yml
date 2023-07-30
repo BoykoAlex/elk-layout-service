@@ -34,11 +34,15 @@ jobs:
   eclipse-language-servers-build:
     runs-on: ubuntu-latest
     steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       - name: Timestamp
         id: timestamp
         run: echo "name=date::$(date +'%Y%m%dT%H%M%S')" >> $GITHUB_OUTPUT
       - name: Cmd
         run: |
+          p2_qualifier=${{ inputs.sts4-language-servers-version }}
           p2_qualifier_param=""
           if ! [[ -z ${p2_qualifier} ]]; then
             p2_qualifier_param="-Dp2.qualifier=${p2_qualifier}"
@@ -47,4 +51,5 @@ jobs:
           -P${{ inputs.eclipse_profile }} \
           ${p2_qualifier_param} \
           -P${{ inputs.build_type }} -DskipTests=${{ inputs.skip_tests }} \
-          -Dbuild.qualifier=${{ steps.timestamp.outputs.date }}"
+          -Dbuild.qualifier=${{ steps.timestamp.outputs.date }} \
+          -Dtimestamp=${{ steps.date.outputs.date }}"
