@@ -58,7 +58,7 @@ jobs:
     steps:
       - name: Cmd
         run: |
-          echo "Stamp ${{ needs.eclipse-language-servers-build.outputs.date }}"
+          echo "Stamp ${{ needs.eclipse-language-servers-build.outputs.stamp }}"
           echo "Stamp from step ${{ needs.eclipse-language-servers-build.steps.timestamp.outputs.date }}"
 
   job-e428:
@@ -67,5 +67,5 @@ jobs:
     steps:
       - name: Cmd
         run: |
-          echo "Stamp ${{ needs.eclipse-language-servers-build.outputs.date }}"
+          echo "Stamp ${{ needs.eclipse-language-servers-build.outputs.stamp }}"
           echo "Stamp from step ${{ needs.eclipse-language-servers-build.steps.timestamp.outputs.date }}"
