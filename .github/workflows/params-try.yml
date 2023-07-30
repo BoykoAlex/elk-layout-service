@@ -41,7 +41,7 @@ jobs:
         run: |
           p2_qualifier=${{ inputs.sts4-language-servers-version }}
           p2_qualifier_param=""
-          if [ -n p2_qualifier ]; then
+          if [ -n ${p2_qualifier} ]; then
             p2_qualifier_param="-Dp2.qualifier=${p2_qualifier}"
           fi  
           echo "mvn clean package \
