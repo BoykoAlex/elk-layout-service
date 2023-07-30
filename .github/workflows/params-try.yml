@@ -1,0 +1,46 @@
+name: Input Parameters playground
+
+# configure manual trigger
+on:
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: Build type such as 'snapshot', 'milestone' or 'release'
+        required: true
+        default: 'snapshot'
+        type: string
+      eclipse_profile:
+        description: Eclipse Profile
+        required: true
+        default: 'e428'
+        type: string
+      skip_tests:
+        description: skip ls tests execution
+        required: false
+        default: false
+        type: boolean
+      sts4-language-servers-version:
+        description: version of sts4 ls extensions
+        required: false
+        type: string
+      ref:
+        description: Git branch, tag, commit hash
+        required: false
+        default: 'main'
+        type: string
+
+jobs:
+
+  eclipse-language-servers-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Timestamp
+        id: timestamp
+        run: echo "name=date::$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
+      - name: Cmd
+        run: |
+          echo "mvn clean package \
+          -P${{ inputs.eclipse_profile }} \
+          ${{ inputs.sts4-language-servers-version ? '-Dp2.qualifier=inputs.sts4-language-servers-version'" : '' }} \
+          -P${{ inputs.build_type }} -DskipTests=${{ inputs.skip_tests }} \
+          -Dbuild.qualifier=${{ steps.timestamp.outputs.date }}
