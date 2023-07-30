@@ -43,4 +43,4 @@ jobs:
           -P${{ inputs.eclipse_profile }} \
           -Dp2.qualifier='${{ inputs.sts4-language-servers-version }}' \
           -P${{ inputs.build_type }} -DskipTests=${{ inputs.skip_tests }} \
-          -Dbuild.qualifier=${{ steps.timestamp.outputs.date }}
+          -Dbuild.qualifier=${{ steps.timestamp.outputs.date }}"
