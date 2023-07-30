@@ -41,6 +41,6 @@ jobs:
         run: |
           echo "mvn clean package \
           -P${{ inputs.eclipse_profile }} \
-          ${{ inputs.sts4-language-servers-version ? '-Dp2.qualifier=inputs.sts4-language-servers-version'" : '' }} \
+          -Dp2.qualifier='${{ inputs.sts4-language-servers-version }}' \
           -P${{ inputs.build_type }} -DskipTests=${{ inputs.skip_tests }} \
           -Dbuild.qualifier=${{ steps.timestamp.outputs.date }}
