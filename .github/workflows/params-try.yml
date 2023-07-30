@@ -49,6 +49,7 @@ jobs:
           ${p2_qualifier_param} \
           -P${{ inputs.build_type }} -DskipTests=${{ inputs.skip_tests }} \
           -Dbuild.qualifier=${{ steps.timestamp.outputs.date }}"
+          mvn clean package -P${{ inputs.eclipse_profile }} ${p2_qualifier_param} -P${{ inputs.build_type }} -DskipTests=${{ inputs.skip_tests }}
     outputs:
       stamp: ${{ steps.timestamp.outputs.date }}
 
